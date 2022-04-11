@@ -1,7 +1,7 @@
 package hwr.oop.examples;
 
-import org.junit.jupiter.api.Test;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 class HelloWorldTest {
 
@@ -11,24 +11,10 @@ class HelloWorldTest {
     }
 
     @Test
-    void HelloWorld(){
-        HelloWorld helloWorld = new HelloWorld("World");
+    void helloWorld_givesUsAHelloWorldString() {
+        HelloWorld helloWorld = new HelloWorld();
         String output = helloWorld.getOutputString();
         Assertions.assertThat(output).isEqualTo("Hello World");
-    }
-
-    @Test
-    void HelloWorldRandomName_toGreetMe(){
-        HelloWorld helloWorld = new HelloWorld("Marlon");
-        String output = helloWorld.getOutputString();
-        Assertions.assertThat(output).isEqualTo("Hello Marlon");
-    }
-
-    @Test
-    void HelloWorldRandomName_toGreetStepfan(){
-        HelloWorld helloWorld = new HelloWorld("Stepfan");
-        String output = helloWorld.getOutputString();
-        Assertions.assertThat(output).isEqualTo("Hello Stepfan");
     }
 
 }
