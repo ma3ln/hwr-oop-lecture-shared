@@ -6,7 +6,7 @@ class ExceptionsExample {
         throw new Exception("This is tracked, notice 'throws' declaration");
     }
 
-    void throwUncheckedException() {
+    void throwUncheckedException() throws Exception {
         throw new RuntimeException("This is not tracked!");
     }
 }
