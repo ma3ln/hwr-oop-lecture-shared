@@ -93,10 +93,11 @@ class ExceptionsTest {
     @Test
     void exceptionExample_ThrowsCheckedException_CanBeCaught() {
         ExceptionsExample example = new ExceptionsExample();
+        // fail("Test not yet implemented");  // original exercise
         try {
             example.throwCheckedException();
-            fail();
-        } catch (Exception e) {
+            fail("Should not be reachable");
+        } catch (Exception e) {  // actually required to catch Exception
             e.printStackTrace();
         }
     }
@@ -104,12 +105,15 @@ class ExceptionsTest {
     @Test
     void exceptionExample_ThrowsUncheckedException_CanBeCaught() {
         ExceptionsExample example = new ExceptionsExample();
+        // fail("Test not yet implemented");  // original exercise
         try {
             example.throwUncheckedException();
-            fail();
-        }catch (RuntimeException runtimeException){
-            runtimeException.printStackTrace();
+            fail("Should not be reachable");
+        } catch (RuntimeException e) {  // only required to catch RuntimeExceptions
+            e.printStackTrace();
         }
     }
+
+
 
 }
