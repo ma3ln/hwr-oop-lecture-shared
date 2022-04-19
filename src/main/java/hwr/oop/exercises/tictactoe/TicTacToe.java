@@ -6,9 +6,12 @@ class TicTacToe {
     int [][] spielfeld = new int[3][3];
     boolean xZug = true;
     boolean yZug = true;
+    int xPunkte = 0;
+    int yPunkte = 0;
 
     TicTacToe() {
-        // TODO implement!
+        System.out.println("Punktestand: "+ xPunkte+" : "+yPunkte);
+        spielfeld = new int[3][3];
     }
 
     int getValueAt(int x, int y) {
@@ -24,6 +27,7 @@ class TicTacToe {
 
     void setCross(int x, int y) {
         if(isGameOver()){
+            yPunkte += yPunkte;
             throw new RuntimeException("Circle won");
         }
         if (xZug == true && getValueAt(x,y) != 1 && getValueAt(x,y) != 2){
@@ -38,6 +42,7 @@ class TicTacToe {
 
     void setCircle(int x, int y) {
         if(isGameOver()){
+            xPunkte += xPunkte;
             throw new RuntimeException("Cross won");
         }
         if (yZug == true && getValueAt(x,y) != 1 && getValueAt(x,y) != 2){
