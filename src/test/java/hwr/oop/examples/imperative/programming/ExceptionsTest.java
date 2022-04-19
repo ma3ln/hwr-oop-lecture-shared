@@ -111,6 +111,8 @@ class ExceptionsTest {
             fail("Should not be reachable");
         } catch (RuntimeException e) {  // only required to catch RuntimeExceptions
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
