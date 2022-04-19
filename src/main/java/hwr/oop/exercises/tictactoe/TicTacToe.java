@@ -28,6 +28,7 @@ class TicTacToe {
     void setCross(int x, int y) {
         if(isGameOver()){
             yPunkte += yPunkte;
+            new TicTacToe();
             throw new RuntimeException("Circle won");
         }
         if (xZug == true && getValueAt(x,y) != 1 && getValueAt(x,y) != 2){
@@ -43,6 +44,7 @@ class TicTacToe {
     void setCircle(int x, int y) {
         if(isGameOver()){
             xPunkte += xPunkte;
+            new TicTacToe();
             throw new RuntimeException("Cross won");
         }
         if (yZug == true && getValueAt(x,y) != 1 && getValueAt(x,y) != 2){
