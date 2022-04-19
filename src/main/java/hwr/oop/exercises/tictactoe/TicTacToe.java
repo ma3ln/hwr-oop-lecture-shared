@@ -31,7 +31,7 @@ class TicTacToe {
             new TicTacToe();
             throw new RuntimeException("Circle won");
         }
-        if (xZug == true && getValueAt(x,y) != 1 && getValueAt(x,y) != 2){
+        if (xZug && getValueAt(x,y) != 1 && getValueAt(x,y) != 2){
             spielfeld[x][y] = 1;
             xZug = false;
             yZug = true;
@@ -47,7 +47,7 @@ class TicTacToe {
             new TicTacToe();
             throw new RuntimeException("Cross won");
         }
-        if (yZug == true && getValueAt(x,y) != 1 && getValueAt(x,y) != 2){
+        if (yZug && getValueAt(x,y) != 1 && getValueAt(x,y) != 2){
             spielfeld[x][y] = 2;
             xZug = true;
             yZug = false;
