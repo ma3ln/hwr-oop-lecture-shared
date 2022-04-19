@@ -23,6 +23,9 @@ class TicTacToe {
     }
 
     void setCross(int x, int y) {
+        if(isGameOver()){
+            throw new RuntimeException("Circle won");
+        }
         if (xZug == true && getValueAt(x,y) != 1 && getValueAt(x,y) != 2){
             spielfeld[x][y] = 1;
             xZug = false;
@@ -30,12 +33,13 @@ class TicTacToe {
         }else{
             throw new RuntimeException("Andere Spieler ist dran.");
         }
-        if(isGameOver()){
-            throw new RuntimeException("Cross won");
-        }
+
     }
 
     void setCircle(int x, int y) {
+        if(isGameOver()){
+            throw new RuntimeException("Cross won");
+        }
         if (yZug == true && getValueAt(x,y) != 1 && getValueAt(x,y) != 2){
             spielfeld[x][y] = 2;
             xZug = true;
@@ -43,51 +47,36 @@ class TicTacToe {
         }else{
             throw new RuntimeException("Andere Spieler ist dran.");
         }
-        if(isGameOver()){
-            throw new RuntimeException("Circle won");
-        }
+
 
     }
 
     boolean isGameOver() {
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (spielfeld[i][j] == 0) {
-                    return false;
-                }
-                if(spielfeld[i][j] == 1){
-                    if(i == 1 && j == 1){
-                        if(getValueAt(i --,j--) == 1 && getValueAt(i++, j++) == 1){
-                            return true;
-                        }
-                        if(getValueAt(i --,j++) == 1 && getValueAt(i++, j--) == 1){
-                            return true;
-                        }
-                    }
-                    if(getValueAt(i ,j--) == 1 && getValueAt(i, j++) == 1 && j == 1){
-                        return true;
-                    }
-                    if ((getValueAt(i --,j) == 1 && getValueAt(i++, j) == 1) && i == 1){
-                        return true;
-                    }
-                }
-                if(spielfeld[i][j] == 2) {
-                    if (i == 1 && j == 1) {
-                        if (getValueAt(i--, j--) == 2 && getValueAt(i++, j++) == 2) {
-                            return true;
-                        }
-                        if (getValueAt(i--, j++) == 2 && getValueAt(i++, j--) == 2) {
-                            return true;
-                        }
-                    }
-                    if (getValueAt(i, j--) == 2 && getValueAt(i, j++) == 2 && j == 1) {
-                        return true;
-                    }
-                    if ((getValueAt(i--, j) == 2 && getValueAt(i++, j) == 2) && i == 1) {
-                        return true;
-                    }
-                }
+            if(getValueAt(i,0)== 1 && getValueAt(i,1)== 1 && getValueAt(i,2)==1){
+                return true;
             }
+            if(getValueAt(i,0)== 2 && getValueAt(i,1)== 2 && getValueAt(i,2)==2){
+                return true;
+            }
+            if(getValueAt(0,i)== 1 && getValueAt(1,i)==1 && getValueAt(2,i)==1 ){
+                return true;
+            }
+            if(getValueAt(0,i)== 2 && getValueAt(1,i) == 2 && getValueAt(2,i)==2 ){
+                return true;
+            }
+        }
+        if(getValueAt(1,1)==1 && getValueAt(0,0)== 1 && getValueAt(2,2)== 1){
+            return true;
+        }
+        if(getValueAt(1,1)==1 && getValueAt(0,2)==1 && getValueAt(2,0)==1){
+            return true;
+        }
+        if(getValueAt(1,1)==2 && getValueAt(0,0)== 2 && getValueAt(2,2)== 2){
+            return true;
+        }
+        if(getValueAt(1,1)==2 && getValueAt(0,2)==2 && getValueAt(2,0)==2){
+            return true;
         }
         return false;
     }
