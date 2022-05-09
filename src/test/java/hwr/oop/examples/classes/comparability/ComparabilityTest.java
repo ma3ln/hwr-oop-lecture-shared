@@ -12,10 +12,38 @@ class ComparabilityTest {
     private Train first;
     private Train second;
 
+    private Train third;
+
     @BeforeEach
     void setUp() {
         first = new Train(12);
         second = new Train(13);
+        third =  new Train(14);
+    }
+
+    @Test
+    void compareTo_threeTrainsTransitive(){
+        first.accelerateTo(100);
+        second.accelerateTo(90);
+        third.accelerateTo(80);
+        int compareToResult = first.compareTo(second);
+        int compareingToResult = second.compareTo(third);
+        int comparedToResult = first.compareTo(third);
+        assertThat(compareToResult).isPositive().isNotZero();
+        assertThat(compareingToResult).isPositive().isNotZero();
+        assertThat(comparedToResult).isPositive().isNotZero();
+
+    }
+
+    @Test
+    void comparatorCompare(){
+        Comparator<Train> comparator = new RailCarComparator();
+        int a = comparator.compare(first, second);
+        int b = comparator.compare(second, third);
+        int c = comparator.compare(first, second);
+        assertThat(a).isNegative().isNotZero();
+        assertThat(b).isNegative().isNotZero();
+        assertThat(c).isNegative().isNotZero();
     }
 
     @Test

@@ -1,30 +1,21 @@
 package hwr.oop.exercises.gameoflife;
 
 public class Field {
-    Position[] positions;
-    Cell[] cells;
-    int size;
-    static Cell[][] floor;
-    Field(int size){
-        this.size = size;
-        this.floor = new Cell[size][size];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                this.floor [i][j] = new Cell();
+    Position[][] posi;
+    Cell[][] spielfeld;
+    public Field(int size) {
+        posi = new Position[size][size];
+        spielfeld = new Cell[size][size];
+        for (int i = 0; i <= size; i++) {
+            for (int j = 0; j <= size; j++) {
+                Position position = new Position(i,j);
+                posi[i][j] = position;
+                spielfeld[i][j] = new Cell(position, size);
             }
-
         }
     }
-    Cell getCellAt(Position centerPosition){
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                Cell cell = floor [i][j];
-                Position getCenterPosition = cell.getPosition();
-                if (getCenterPosition.x == centerPosition.x && getCenterPosition.y == centerPosition.y){
-                    return cell;
-                }
-            }
-        }
-        throw new RuntimeException("Failed to Build Array");
-        }
+
+    public static Cell getCellAt(Position centerPosition) {
+        return null;
+    }
 }
