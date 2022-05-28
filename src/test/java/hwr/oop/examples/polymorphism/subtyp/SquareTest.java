@@ -13,16 +13,16 @@ class SquareTest {
                 .isInstanceOf(Object.class)
                 .isInstanceOf(Shape.class)
                 .isInstanceOf(Quadrangle.class)
-                .isInstanceOf(Rectangle.class)
-                .isInstanceOf(Square.class);
+                .isInstanceOf(Rectangles.class)
+                .isInstanceOf(Squares.class);
     }
 
     @Test
     void squareIsRectangle_ButRectangleIsNoSquare() {
         Shape square = new Square(42);
         Shape rectangle = new Rectangle(13, 37);
-        assertThat(square).isInstanceOf(Rectangle.class);
-        assertThat(rectangle).isNotInstanceOf(Square.class);
+        assertThat(square).isInstanceOf(Rectangles.class);
+        assertThat(rectangle).isNotInstanceOf(Squares.class);
     }
 
     @Test
@@ -44,5 +44,7 @@ class SquareTest {
         Shape square = new Square(42);
         int numberOfSides = square.getNumberOfSides();
         assertThat(numberOfSides).isEqualTo(4);
+        Squares squares = Squares.create(2);
     }
+
 }

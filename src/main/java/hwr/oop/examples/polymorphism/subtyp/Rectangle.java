@@ -1,6 +1,6 @@
 package hwr.oop.examples.polymorphism.subtyp;
 
-class Rectangle implements Quadrangle {
+class Rectangle implements Rectangles {
     private final double height;
     private final double width;
 

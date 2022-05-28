@@ -10,4 +10,5 @@ public interface Quadrangle extends Shape, Comparable<Quadrangle> {
     default int compareTo(Quadrangle o) {
         return Double.compare(getAreaSize(), o.getAreaSize());
     }
+
 }

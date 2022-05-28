@@ -1,12 +1,11 @@
 package hwr.oop.examples.polymorphism.subtyp;
 
-import org.assertj.core.api.Assertions;
-import org.assertj.core.internal.IterableElementComparisonStrategy;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static java.lang.Math.sin;
 import static java.lang.Math.toRadians;
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ShapesTest {
@@ -20,16 +19,16 @@ class ShapesTest {
                     .isInstanceOf(Object.class)
                     .isInstanceOf(Shape.class)
                     .isInstanceOf(Quadrangle.class)
-                    .isInstanceOf(Rectangle.class)
-                    .isInstanceOf(Square.class);
+                    .isInstanceOf(Rectangles.class)
+                    .isInstanceOf(Squares.class);
         }
 
         @Test
         void squareIsRectangle_ButRectangleIsNoSquare() {
             Shape square = new Square(42);
             Shape rectangle = new Rectangle(13, 37);
-            assertThat(square).isInstanceOf(Rectangle.class);
-            assertThat(rectangle).isNotInstanceOf(Square.class);
+            assertThat(square).isInstanceOf(Rectangles.class);
+            assertThat(rectangle).isNotInstanceOf(Squares.class);
         }
 
         @Test
@@ -92,6 +91,7 @@ class ShapesTest {
             Comparable<Quadrangle> first = new Rectangle(1, 2);
             Comparable<Quadrangle> second = new Rectangle(1, 2);
 
+
         }
 
         @Test
@@ -114,7 +114,74 @@ class ShapesTest {
             double umfang = raute.getPerimeterLength();
             assertThat(umfang).isEqualTo(4*4);
         }
+
+        @Test
+        void raute_GetOtherAngels_Return135(){
+            Quadrangle raute = new Raute(4,45);
+            double[] otherAngel = raute.getDistinctAngles();
+            assertThat(otherAngel[1]).isEqualTo(135);
+        }
+
+        @Test
+        void parallelogramm_GetOtherAngels_Return135(){
+            Quadrangle parallelogramm = new Parallelogramm(4,5,45);
+            double[] otherAngel = parallelogramm.getDistinctAngles();
+            assertThat(otherAngel[0]).isEqualTo(135);
+        }
+
+        @Test
+        void parra_GetPer_18(){
+            Shape para = new Parallelogramm(4,5,45);
+            double a = para.getPerimeterLength();
+            assertThat(a).isEqualTo(18);
+        }
+
+        @Test
+        void parra_GetArea(){
+            Shape para = new Parallelogramm(4,5,45);
+            double a = para.getAreaSize();
+            assertThat(a).isEqualTo(sin(toRadians(45))*4);
+        }
+
+        @Test
+        void trapez_GetPer(){
+            Shape trap = new Trapez(10,5,45,60);
+            double a = trap.getPerimeterLength();
+            assertThat(a).isEqualTo(21.16972052732128);
+        }
+
+        @Test
+        void trapez_GetAngels(){
+            Quadrangle trap = new Trapez(10,5,45,60);
+            double a[] = trap.getDistinctAngles();
+            assertThat(a[0]).isEqualTo(45);
+            assertThat(a[1]).isEqualTo(60);
+            assertThat(a[2]).isEqualTo(120);
+            assertThat(a[3]).isEqualTo(135);
+        }
+
+        @Test
+        void trapez_GetArea(){
+            Shape trap = new Trapez(10,5,45,60);
+            double a = trap.getAreaSize();
+            assertThat(a).isEqualTo(27.35381642568991);
+        }
+
+        @Test
+        void trapez_GetHoehe(){
+            Trapez trap = new Trapez(10,5,45,60);
+            double a = trap.getHoehe();
+            assertThat(a).isEqualTo(4.330127018922193);
+        }
+
+        @Test
+        void prar_GetHoehe(){
+            Parallelogramm para = new Parallelogramm(2,4,45);
+            double a = para.getHigh();
+            assertThat(a).isEqualTo(sin(toRadians(45))*2/2);
+        }
     }
+
 
 
 }

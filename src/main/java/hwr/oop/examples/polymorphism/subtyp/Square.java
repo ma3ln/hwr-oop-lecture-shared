@@ -1,8 +1,23 @@
 package hwr.oop.examples.polymorphism.subtyp;
 
-class Square extends Rectangle {
+class Square implements Squares {
+    double sideLength;
+    Square(double sideLength) {
+        this.sideLength = sideLength;
+    }
 
-    public Square(double sideLength) {
-        super(sideLength, sideLength);
+    @Override
+    public double[] getDistinctAngles() {
+        return new double[]{90};
+    }
+
+    @Override
+    public double getPerimeterLength() {
+        return sideLength*4;
+    }
+
+    @Override
+    public double getAreaSize() {
+        return sideLength*sideLength;
     }
 }
